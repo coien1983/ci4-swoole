@@ -756,10 +756,12 @@ class IncomingRequest extends Request
 
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 
+
 		if ($uri === '/' || $uri === '')
 		{
 			return '/';
 		}
+
 
 		return $this->removeRelativeDirectory($uri);
 	}

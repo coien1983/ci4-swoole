@@ -592,22 +592,25 @@ class Services extends BaseService
 	 */
 	public static function request(App $config = null, bool $getShared = true)
 	{
-		if ($getShared)
-		{
-			return static::getSharedInstance('request', $config);
-		}
+//	    注释内容，这里是路由镜像。
+//		if ($getShared)
+//		{
+//			return static::getSharedInstance('request', $config);
+//		}
 
 		if (! is_object($config))
 		{
 			$config = config(App::class);
 		}
 
-		return new IncomingRequest(
+		$request = new IncomingRequest(
 				$config,
 				static::uri(),
 				'php://input',
 				new UserAgent()
 		);
+
+		return $request;
 	}
 
 	//--------------------------------------------------------------------

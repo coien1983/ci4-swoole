@@ -1,10 +1,12 @@
 <?php namespace App\Controllers;
 
+use CodeIgniter\HTTP\IncomingRequest;
+
 class Home extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		echo "get here".PHP_EOL;
 	}
 
 	//--------------------------------------------------------------------

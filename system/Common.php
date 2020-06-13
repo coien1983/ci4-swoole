@@ -595,7 +595,10 @@ if (! function_exists('is_cli'))
 	 */
 	function is_cli(): bool
 	{
-		return (PHP_SAPI === 'cli' || defined('STDIN'));
+	    //使用swoole 加载的数据全部都是从cli来的
+
+	    return false;
+//		return (PHP_SAPI === 'cli' || defined('STDIN'));
 	}
 }
 

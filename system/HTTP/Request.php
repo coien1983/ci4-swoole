@@ -353,10 +353,13 @@ class Request extends Message implements RequestInterface
 	{
 		$method = strtolower($method);
 
-		if (! isset($this->globals[$method]))
-		{
-			$this->populateGlobals($method);
-		}
+//		if (! isset($this->globals[$method]))
+//		{
+//			$this->populateGlobals($method);
+//		}
+
+        //不能使用全局静态，每次都要获取新的request数据
+        $this->populateGlobals($method);
 
 		// Null filters cause null values to return.
 		if (is_null($filter))
@@ -439,10 +442,10 @@ class Request extends Message implements RequestInterface
 	 */
 	protected function populateGlobals(string $method)
 	{
-		if (! isset($this->globals[$method]))
-		{
-			$this->globals[$method] = [];
-		}
+//		if (! isset($this->globals[$method]))
+//		{
+//			$this->globals[$method] = [];
+//		}
 
 		// Don't populate ENV as it might contain
 		// sensitive data that we don't want to get logged.
